@@ -1,4 +1,4 @@
-# PlatziMusic
+# Melody
 ## Equipo de backend
 
 ## Como se trabajara en la arama
