@@ -2,3 +2,4 @@ Melody/settings.py
 .env/
 Melody/__pycache__
 Melody/__init__.py
+Lib/
