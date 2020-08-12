@@ -25,7 +25,7 @@ SECRET_KEY = 'g1&5(4!*r&j5@n3xgwm*_cy8g*5ltqz&d(q44j6kfc7q)7)0@#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,11 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # others
+    'rest_framework',
+    'corsheaders',
+    # Local apps
+    'album',
+    'track',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -49,12 +57,42 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
+    'http://localhost:8082',
+    'http://4159b0f1a771.ngrok.io',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 ROOT_URLCONF = 'Melody.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,9 +115,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME':'Melody',
-        'HOST':'mongodb+srv://user:password@cluster0.ftvnm.mongodb.net/Melody?retryWrites=true&w=majority',
-        'USER': 'user',
-        'PASSWORD': 'password'
+        'HOST':'mongodb+srv://cromeroc:yrs6kb2hbGNjTq8U@cluster0.ftvnm.mongodb.net/Melody?retryWrites=true&w=majority',
+        'USER': 'cromeroc',
+        'PASSWORD': 'yrs6kb2hbGNjTq8U'
     }
 }
 
@@ -115,7 +153,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
