@@ -117,9 +117,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME':'Melody',
-        'HOST':'mongodb+srv://cromeroc:yrs6kb2hbGNjTq8U@cluster0.ftvnm.mongodb.net/Melody?retryWrites=true&w=majority',
+        'HOST':'mongodb+srv://cromeroc:eEq6PkFg2qhVSmqb@cluster0.ftvnm.mongodb.net/Melody?retryWrites=true&w=majority',
         'USER': 'cromeroc',
-        'PASSWORD': 'yrs6kb2hbGNjTq8U'
+        'PASSWORD': 'eEq6PkFg2qhVSmqb'
     }
 }
 

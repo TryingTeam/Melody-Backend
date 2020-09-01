@@ -6,12 +6,12 @@ from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     path(
         route = '',
-        view = views.album_list.as_view(),
+        view = views.AlbumList.as_view(),
         name = 'albums',
     ),
     path(
         route = '<int:pk>',
-        view = views.album_detail.as_view(),
+        view = views.AlbumDetail.as_view(),
         name = 'album',
     ),
 ]
