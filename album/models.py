@@ -8,3 +8,7 @@ class Album(models.Model):
     image = models.TextField(max_length=100)
     state = models.BooleanField(default=True)
 
+    def __str__(self):
+        """ Return name album. """
+        return self.name
+

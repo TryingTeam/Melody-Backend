@@ -13,6 +13,10 @@ class Track(models.Model):
     year = models.IntegerField()
     counter_likes = models.IntegerField()
     state = models.BooleanField(default= True)
+    
+    def __str__(self):
+        """ Return name track. """
+        return self.name
 
 class Track_likes(models.Model):
     id_user = models.ForeignKey(User,on_delete= models.CASCADE)

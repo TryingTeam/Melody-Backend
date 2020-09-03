@@ -8,21 +8,26 @@ class ProfielSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
+
+    profile = ProfielSerializer()
+
     class Meta:
         model = User
-        fields = ('first_name','last_name','email','username', 'password')
+        fields = ('first_name','last_name','email','username', 'password', 'profile')
 
 
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('first_name','last_name','email','username', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'first_name': {'write_only': True},
+            'last_name': {'write_only': True}
+        }
         
     def create(self, validate_data):
         user = User.objects.create_user(
-            validate_data['first_name'],
-            validate_data['last_name'],
             validate_data['username'], 
             validate_data['email'],
             validate_data['password'])
